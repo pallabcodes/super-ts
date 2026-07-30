@@ -1,8 +1,8 @@
 /**
- * Loose capability: Ring Buffer
- * Can be used standalone or integrated into stream buffers later.
+ * Capability: Bounded Circular Storage
+ * Fixed-capacity allocation storage for sequential data streaming.
  */
-export class RingBuffer<T> {
+export class BoundedCircularStorage<T> {
   private buffer: Array<T | undefined>;
   private head = 0;
   private tail = 0;
@@ -12,7 +12,7 @@ export class RingBuffer<T> {
     this.buffer = new Array<T | undefined>(capacity);
   }
 
-  push(item: T): boolean {
+  write(item: T): boolean {
     if (this.count === this.capacity) return false;
     this.buffer[this.tail] = item;
     this.tail = (this.tail + 1) % this.capacity;
@@ -20,7 +20,7 @@ export class RingBuffer<T> {
     return true;
   }
 
-  pop(): T | undefined {
+  read(): T | undefined {
     if (this.count === 0) return undefined;
     const val = this.buffer[this.head];
     this.buffer[this.head] = undefined;

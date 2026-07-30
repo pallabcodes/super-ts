@@ -1,3 +1,3 @@
-export * from './priority-queue/index.js';
-export * from './ring-buffer/index.js';
-export * from './lru-cache/index.js';
+export * from './task-priority-dispatcher/index.js';
+export * from './bounded-circular-storage/index.js';
+export * from './frequency-recency-store/index.js';

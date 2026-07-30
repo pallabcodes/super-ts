@@ -1,8 +1,8 @@
 /**
- * Loose capability: LRU Cache
- * Can be used standalone or integrated into state/graph memoization later.
+ * Capability: Frequency Recency Store
+ * Key-value state storage with automatic stale item eviction.
  */
-export class LRUCache<K, V> {
+export class FrequencyRecencyStore<K, V> {
   private store = new Map<K, V>();
 
   constructor(public readonly limit: number) {}
