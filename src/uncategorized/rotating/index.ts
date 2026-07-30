@@ -15,4 +15,6 @@ export const rotate = (arr: any[], k = 3) => {
 
 const list = [1, 2, 3, 4, 5, 6, 7];
 
-console.info(rotate(list));
+console.log(JSON.stringify(rotate(list)));
+
+// npx tsx src/uncategorized/rotating/index.ts
