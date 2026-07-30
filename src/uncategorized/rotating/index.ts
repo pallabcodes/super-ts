@@ -1,6 +1,7 @@
 export const rotate = (arr: any[], k = 3) => {
   const n = arr.length;
   if (n === 0) return [];
+
   k %= n;
 
   const result = new Array(n);
@@ -13,4 +14,5 @@ export const rotate = (arr: any[], k = 3) => {
 };
 
 const list = [1, 2, 3, 4, 5, 6, 7];
+
 console.info(rotate(list));

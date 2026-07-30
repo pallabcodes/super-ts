@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "node --test"
+    "test": "node --test",
+    "run:rotating": "tsx src/uncategorized/rotating/index.ts"
   },
   "keywords": [
     "subsystem",
@@ -17,5 +18,9 @@
     "indexing"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
 }
