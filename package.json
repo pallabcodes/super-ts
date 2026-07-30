@@ -1,0 +1,21 @@
+{
+  "name": "super-ts",
+  "version": "1.0.0",
+  "description": "Capability and subsystem-based data structures and performance utilities engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test"
+  },
+  "keywords": [
+    "subsystem",
+    "capabilities",
+    "memory-management",
+    "scheduling",
+    "caching",
+    "indexing"
+  ],
+  "author": "",
+  "license": "ISC"
+}
