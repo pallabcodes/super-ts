@@ -1,17 +1,16 @@
-/**
- * Capability: Rotating
- * Circular shifts, index wraps, dynamic rotation operations.
- */
-export class Rotator<T> {
-  static rotateLeft<T>(items: T[], positions: number): T[] {
-    if (items.length === 0) return [];
-    const k = positions % items.length;
-    return items.slice(k).concat(items.slice(0, k));
-  }
+export const rotate = (arr: any[], k = 3) => {
+  const n = arr.length;
+  if (n === 0) return [];
+  k %= n;
 
-  static rotateRight<T>(items: T[], positions: number): T[] {
-    if (items.length === 0) return [];
-    const k = positions % items.length;
-    return items.slice(-k).concat(items.slice(0, -k));
-  }
-}
+  const result = new Array(n);
+  let idx = 0;
+
+  for (let i = n - k; i < n; i++) result[idx++] = arr[i];
+  for (let j = 0; j < n - k; j++) result[idx++] = arr[j];
+
+  return result;
+};
+
+const list = [1, 2, 3, 4, 5, 6, 7];
+console.info(rotate(list));
