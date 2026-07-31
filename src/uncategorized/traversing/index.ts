@@ -1,51 +1,43 @@
-/**
- * Capability: Traversing
- * Abstract iteration, step-walking, depth/breadth visitor patterns.
- */
-export type Visitor<T> = (item: T) => boolean | void;
+const keypad: Record<string, string> = {
+    "2": "abc",
+    "3": "def",
+    "4": "ghi",
+    "5": "jkl",
+    "6": "mno",
+    "7": "pqrs",
+    "8": "tuv",
+    "9": "wxyz",
+};
 
-export class Traverser {
-  static depthFirst<T>(
-    root: T,
-    getChildren: (node: T) => T[],
-    visit: Visitor<T>
-  ): void {
-    const stack: T[] = [root];
-    const visited = new Set<T>();
+function letterCombinations(digits: string): string[] {
 
-    while (stack.length > 0) {
-      const curr = stack.pop()!;
-      if (!visited.has(curr)) {
-        visited.add(curr);
-        const shouldStop = visit(curr);
-        if (shouldStop === true) break;
-        const children = getChildren(curr);
-        for (let i = children.length - 1; i >= 0; i--) {
-          stack.push(children[i]);
+    if (digits.length === 0) return [];
+
+    const answer: string[] = [];
+
+    function solve(index: number, current: string): void {
+
+        if (index === digits.length) {
+
+            answer.push(current);
+
+            return;
         }
-      }
-    }
-  }
 
-  static breadthFirst<T>(
-    root: T,
-    getChildren: (node: T) => T[],
-    visit: Visitor<T>
-  ): void {
-    const queue: T[] = [root];
-    const visited = new Set<T>();
+        const letters = keypad[digits[index]];
 
-    while (queue.length > 0) {
-      const curr = queue.shift()!;
-      if (!visited.has(curr)) {
-        visited.add(curr);
-        const shouldStop = visit(curr);
-        if (shouldStop === true) break;
-        const children = getChildren(curr);
-        for (const child of children) {
-          queue.push(child);
+        for (const letter of letters) {
+
+            solve(
+                index + 1,
+                current + letter
+            );
         }
-      }
     }
-  }
+
+    solve(0, "");
+
+    return answer;
 }
+
+console.info(letterCombinations("23"));
